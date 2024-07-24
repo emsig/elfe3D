@@ -6,7 +6,7 @@ _About:_
 
 _Getting started:_
 
-• gfortran should be part of your system in gnu compiler collection(gcc). Intel Fortran options are included, but not fully tested.
+• gfortran should be part of your system in gnu compiler collection (gcc). Intel Fortran options are included, but not fully tested.
 
 • OpenBLAS and make packages are required.
 
