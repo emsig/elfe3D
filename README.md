@@ -6,6 +6,7 @@ _About:_
 elfe3D is a 3D forward modelling code that can be used to simulate electric and magnetic field responses from frequency-domain controlled-source electromagnetic setups. It uses tetrahedral meshes and first-order finite-element approximations.
 
 _Contributions:_
+
 A first version of elfe3D was developed by Paula Rulff with contributions from Thomas Kalscheuer at Uppsala University from 2018-2023.
 
 A modified version of elfe3D is implemented in the inversion software emilia (cite).
@@ -25,3 +26,12 @@ _Getting started:_
 - Adjust your input file `in/elfe3D_input_txt`.
 - Run tetgen to generate your mesh input files.
 - Run elfe3d.
+
+_Credits:_
+
+If you publish results generated with elfe3D, please give credit to the elfe3D developers by citing:
+
+Paula Rulff, Laura M Buntin, Thomas Kalscheuer, Efficient goal-oriented  mesh refinement in 3-D finite-element modelling adapted for controlled source electromagnetic surveys, Geophysical Journal International, Volume 227, Issue
+3, December 2021, Pages 1624–1645, https://doi.org/10.1093/gji/ggab264
+
+and refer to the elfe3D the version you used using the ZENODO DOI: Link to Zenodo DOI
