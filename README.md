@@ -3,7 +3,7 @@ Modelling with the total electric field approach using finite elements in 3D
 
 _About:_
 
-elfe3D is a 3D forward modelling code to simulate electric and magnetic field responses from frequency-domain controlled-source electromagnetic setups. It uses tetrahedral meshes and first-order finite-element approximations.
+elfe3D is a 3D forward modelling code that can be used to simulate electric and magnetic field responses from frequency-domain controlled-source electromagnetic setups. It uses tetrahedral meshes and first-order finite-element approximations.
 
 _Getting started:_
 
