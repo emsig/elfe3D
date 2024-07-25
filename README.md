@@ -18,7 +18,7 @@ _Getting started:_
 
 • Compile with ’make all’.
 
-• Adjust your input file 'elfe3D_input_txt'.
+• Adjust your input file 'in/elfe3D_input_txt'.
 
 • Run tetgen to generate your mesh input files.
 
