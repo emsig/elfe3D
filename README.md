@@ -5,6 +5,15 @@ _About:_
 
 elfe3D is a 3D forward modelling code that can be used to simulate electric and magnetic field responses from frequency-domain controlled-source electromagnetic setups. It uses tetrahedral meshes and first-order finite-element approximations.
 
+_Contributions:_
+A first version of elfe3D was developed by Paula Rulff with contributions from Thomas Kalscheuer at Uppsala University from 2018-2023.
+A modified version of elfe3D is implemented in the inversion software emilia (cite).
+Further developments of elfe3D by Paula Rulff, now at Delft University of Technology, are ongoing. Suggestions for improvement are welcome!
+
+_Contact_: 
+
+Paula Rulff p.rulff@tudelft.nl
+
 _Getting started:_
 
 - gfortran should be part of your system via the gnu compiler collection (gcc). Intel Fortran compilation is possible, but not fully tested.
