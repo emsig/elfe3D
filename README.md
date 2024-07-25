@@ -7,12 +7,12 @@ elfe3D is a 3D forward modelling code that can be used to simulate electric and 
 
 _Contributions:_
 A first version of elfe3D was developed by Paula Rulff with contributions from Thomas Kalscheuer at Uppsala University from 2018-2023.
+
 A modified version of elfe3D is implemented in the inversion software emilia (cite).
+
 Further developments of elfe3D by Paula Rulff, now at Delft University of Technology, are ongoing. Suggestions for improvement are welcome!
 
-_Contact_: 
-
-Paula Rulff p.rulff@tudelft.nl
+_Contact_: p.rulff@tudelft.nl
 
 _Getting started:_
 
