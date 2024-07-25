@@ -1,0 +1,30 @@
+solver                  2
+model_size
+-30000 -30000 -30000
+30000 30000 30000
+num_freq                1
+100.0
+200.0
+num_rec                 3
+500.0 0.0 0.01
+1000.0 0.0 0.01
+500.0 500.0 0.01
+output_E_file           out/electric_fields
+output_H_file           out/magnetic_fields
+source_type             6
+-1.25 0.0 0.0
+1.25 0.0 0.0
+current_direction       1
+source_moment           1
+PEC                     0
+num_PEC                 0
+model_file_name         in/CSEM_input_model.
+region_parameter_file   in/CSEM_regionpara.txt
+
+maxRefSteps             0
+maxUnknowns             10000000  
+betaRef                 0.85
+accuracyTol             0.00003
+vtk                     0
+errorEst_method         1
+refStrategy             0
