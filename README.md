@@ -6,7 +6,7 @@ _About:_
 
 _Getting started:_
 
-- gfortran should be part of your system in gnu compiler collection (gcc). Intel Fortran options are included, but not fully tested.
+- gfortran should be part of your system via the gnu compiler collection (gcc). Intel Fortran compilation is possible, but not fully tested.
 - OpenBLAS and make packages are required.
 - tetgen: The open source mesh generator tetgen must be installed. It can be downloaded from http://wias-berlin.de/software/index.jsp?id=TetGen&lang=1#Download or via `sudo apt install tetgen` on Ubuntu.
 - MUMPS is an open source direct solver available at https://mumps-solver.org. Read the MUMPS documentation for compiling instructions. Link the MUMPS routines in your makefile. In the code documentation you find detailed instructions to install and link MUMPS in an Ubuntu system.
