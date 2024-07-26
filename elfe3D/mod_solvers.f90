@@ -35,7 +35,7 @@ contains
 !> matrix check and solving the system of equations
 !> does nothing, solver currently not available
 !---------------------------------------------------------------------
-subroutine PARDISO_solving(n, a, ja, ia, b, x, mem_pardiso)
+subroutine PARDISO_solving(n, a, ja, ia, b, x)
 
     ! INPUT
     ! length of matrix and vector (E)
@@ -56,7 +56,7 @@ subroutine PARDISO_solving(n, a, ja, ia, b, x, mem_pardiso)
     ! OUTPUT
     ! Solution vector S
     complex(kind=dp), dimension(:,:), intent(inout) :: x !(n)
-    real(kind=dp) :: mem_pardiso
+    ! real(kind=dp) :: mem_pardiso
 
     ! LOCAL variables
     integer(kind=dp), dimension(64) :: pt
