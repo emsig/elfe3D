@@ -1,9 +1,12 @@
-!> Module of eelfe3D containing subroutines to read in attr.txt file
-!> and put numbers into model parameters
+!> @brief
+!> Module of elfe3D containing subroutineto read in/regionparameters.txt
+!> and assign model parameters 
+!> (resistivities and magnetic permeabilities) for each element
 !!
 !> written by Paula Rulff, 27/08/2018
 !!
 !> Copyright (C) Paula Rulff 2020
+!>
 !>  This file is part of elfe3D.
 !> 
 !>  Licensed under the Apache License, Version 2.0 (the "License"); 
@@ -28,12 +31,21 @@ module model_parameters
   implicit none
 
 contains
-
   !---------------------------------------------------------------------
-  ! subroutine for assigning model parameters to elements based on 
-  ! their elemental attributes
-  ! (schauen, wie das in EMILIA gehandhabt wird und fuer komplexere 
-  ! modelle umschreiben)
+  !> @brief 
+  !> subroutine for assigning model parameters to elements based on 
+  !> their element attributes
+  !> Provide the following in input file: in/regionparameters.txt
+  !> This input file must have the following 
+  !> structure (example):
+  !> # eleattr
+  !> 3
+  !> # eleattr rho mu_r epsilon_r
+  !> 1 100000000.0 1.0 0.0
+  !> 2 100 1.0 0.0
+  !> 3 10 1.0 0.0
+  !>
+  !> epsilon_r is not used.
   !---------------------------------------------------------------------
 
   subroutine read_model_param (attr, M, rho, mu)
@@ -47,69 +59,72 @@ contains
     real(kind=dp), allocatable, dimension(:), intent(out) :: rho,mu
 
     ! LOCAL variables
-    real(kind=dp) :: res_2, res_3, res_4, res_5, res_6, res_7, res_8, res_9 ! electrical resistivity subsurface
-    real(kind=dp) :: mu_r_2, mu_r_3, mu_r_4, mu_r_5, mu_r_6, mu_r_7, mu_r_8, mu_r_9 ! relative magnetic permeability
-    real(kind=dp), parameter :: mu_zero = mu_0!0.000001256637061_dp
-    integer :: i, allo_stat
-
+    character(len=100) :: ModParaFileName
+    integer :: num_attr
+    integer, allocatable, dimension(:) :: region_attr
+    real(kind=dp), allocatable, dimension(:) :: region_rho, &
+                                                region_mu_r, &
+                                                region_epsilon_r
+    integer :: i, j, allo_stat
     !-------------------------------------------------------------------
-
-    ! Reading model parameters from mod_define_model
-    ! call Write_Message (log_unit, 'Reading model parameters')
-    ! uncomment, this routine not used for custEM model
-    call define_model_parameters(res_2, mu_r_2, res_3, mu_r_3, res_4, mu_r_4, res_5, mu_r_5, res_6, mu_r_6, res_7, mu_r_7, res_8, mu_r_8, res_9, mu_r_9)
-    
+    ! Allocate resistivity and magnetic permeability arrays
     allocate (rho(M), mu(M), stat = allo_stat)
-    call allocheck(log_unit, allo_stat, "read_model_param: error allocating array rho and mu")
-
+    call allocheck(log_unit, allo_stat, &
+                  "read_model_param: error allocating array rho and mu")
+    ! initialise
     rho = 0.0_dp
     mu = 0.0_dp
 
+    ! read region parameters from regionparameters.txt input file
+    ModParaFileName = 'in/regionparameters.txt'
+    ! open the file
+    open (in_unit, file = trim(ModParaFileName), status='old', &
+                   action = 'read', iostat = opening)
 
-    ! Region attribute numbers in model parameters umwandeln:
-    !call Write_Message (log_unit, 'Assigning model parameters')
-!KT: besser als where statement
-    do i = 1,M
-       if (attr(i) .eq. 1) then
-          rho(i) = 100000000.0_dp ! Ohmm (air)
-          ! change back, to air, this is for custEM model:
-       !    rho(i) = 8.0_dp
-         mu(i) = mu_zero
-       ! elseif (attr(i) .ge. 2) then
-       !    rho(i) = 0.0000002_dp
-       !    mu(i) = mu_zero
-       ! uncomment again, this is for custEM model:
-       elseif (attr(i) .eq. 2) then
-          rho(i) = res_2 ! Ohmm (earth)
-          mu(i) = mu_zero * mu_r_2
-       elseif (attr(i) .eq. 3) then
-          rho(i) = res_3 ! Ohmm (earth)
-          mu(i) = mu_zero * mu_r_3
-       elseif (attr(i) .eq. 4) then
-          rho(i) = res_4 ! Ohmm (earth)
-          mu(i) = mu_zero * mu_r_4
-       elseif (attr(i) .eq. 5) then
-          rho(i) = res_5 ! Ohmm (earth)
-          mu(i) = mu_zero * mu_r_5
-       elseif (attr(i) .eq. 6) then
-          rho(i) = res_6 ! Ohmm (earth)
-          mu(i) = mu_zero * mu_r_6
-       elseif (attr(i) .eq. 7) then
-          rho(i) = res_7 ! Ohmm (earth)
-          mu(i) = mu_zero * mu_r_7
-       elseif (attr(i) .eq. 8 ) then
-          rho(i) = res_8 ! Ohmm (earth)
-          mu(i) = mu_zero * mu_r_8
-       elseif (attr(i) .eq. 9 ) then
-          rho(i) = res_9 ! Ohmm (earth)
-          mu(i) = mu_zero * mu_r_9
-       ! elseif (attr(i) .eq. 0 ) then
-       !    rho(i) = 80000.0_dp ! Ohmm (air) for Um-custEM model
-       !    mu(i) = mu_zero
-       end if
-    end do
+    ! was opening successful?
+    if (opening /= 0) then
+         write(*,*) 'file ' // trim(ModParaFileName) // &
+                    ' could not be opened'
+    else
+      ! skip # line
+      read (in_unit, *)
+      ! read number of element attributes from the second line
+      read (in_unit, *) num_attr
+      ! skip # line
+      read (in_unit, *)
+      ! allocate region_attr, region_rho, region_mu_r, region_epsilon_r
+      allocate (region_attr(num_attr), region_rho(num_attr), &
+                region_mu_r(num_attr), region_epsilon_r(num_attr), &
+                stat = allo_stat)  
+      ! read all following lines
+      do j = 1, num_attr
+         read (in_unit, *) region_attr(j), &
+                           region_rho(j), &
+                           region_mu_r(j), &
+                           region_epsilon_r(j) 
+      end do
 
-    ! Check if rrays contain NaN elements or are zero
+      ! print *, 'region_attribute', region_attr
+      ! print *, 'region_rho', region_rho
+      ! print *, 'region_mu_r', region_mu_r
+      ! print *, 'region_epsilon_r', region_epsilon_r
+
+      ! close modelpara file
+      close (unit = in_unit)
+
+      ! assign element resistivities and permeabilities
+      do i = 1, M
+        do j = 1, num_attr
+          if (attr(i) .eq. region_attr(j)) then
+            rho(i) = region_rho(j)
+            mu(i) = mu_0 * region_mu_r(j)
+          end if
+        end do
+      end do
+
+    end if
+
+    ! Check if arrays contain NaN elements or are zero
     do i = 1,M
       if (rho(i) .ne. rho(i) .or. mu(i) .ne. mu(i)) then
         call Write_Message (log_unit, &
@@ -120,7 +135,12 @@ contains
       end if
     end do
 
+    ! deallocate locally allocated arrays
+    if(allocated(region_attr)) deallocate(region_attr)
+    if(allocated(region_rho)) deallocate(region_rho)
+    if(allocated(region_mu_r)) deallocate(region_mu_r)
+    if(allocated(region_epsilon_r)) deallocate(region_epsilon_r)
+
   end subroutine read_model_param
   !---------------------------------------------------------------------
-
 end module model_parameters
