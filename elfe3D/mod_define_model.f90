@@ -53,6 +53,8 @@ contains
   !---------------------------------------------------------------------
   !> @brief'
   !> subroutine for defining solver
+  !> Define the following in input file:
+  !> solver
   !> 1: PARDISO (currently not available!)
   !> 2: MUMPS
   !---------------------------------------------------------------------
@@ -97,7 +99,10 @@ contains
   !---------------------------------------------------------------------
   !> @brief
   !> subroutine for defining refinement parameters
-  !
+  !> Define the following in input file:
+  !> maxRefSteps, maxUnknowns, betaRef, accuracyTol, vtk , 
+  !> errorEst_method , refStrategy             0
+  !>
   !> Maximum number of refinement steps:
   !> maxRefSteps = 0 means no refinement
   !> run several frequencies only without refinement
@@ -107,7 +112,7 @@ contains
   !> betaRef
   !> (e.g. 0.9 = those with 90% highest error estimator)
   !> desired accuracy tolerance < 1:
-  !> accuracyTol = 0.00003_dp 
+  !> accuracyTol
   !> write .vtk files for paraview with error estimates (yes/no) = (1/0)
   !> vtk
   !> Method for error estimation:
@@ -228,6 +233,7 @@ contains
   !---------------------------------------------------------------------
   !> @brief
   !> subroutine for defining mesh
+  !> Define the following in input file: model_file_name
   !---------------------------------------------------------------------
   subroutine define_mesh (NodeFile, EdgeFile, ElementFile, NeighFile, &
                          refStep, StringName)
@@ -360,8 +366,14 @@ contains
   !> @brief
   !> subroutine for defining size of the source
   !>
-  !> Define source type
-  !> options for CSTYPE:
+  !> Define the following in input file:
+  !> source_type
+  !> source start coordinates
+  !> source end coordinates
+  !> current_direction
+  !> source_moment
+  !>
+  !> Options for source_type:
   !> HED_x (0), HED_y (1), loop_source (2), arbitrary HED_x (3), 
   !> arbitrary HED_y (4), straight_source_segment in any direction (5)
   !> segmented_line_source (6), segmented_loop_source (7)
@@ -505,6 +517,20 @@ contains
   !> @brief
   !> subroutine for defining existence and size of a PEC
   !> to model metallic borehole casing
+  !> Define the following in input file:
+  !> no PEC present: 
+  !> PEC_present = 0
+  !> PEC present: 
+  !> PEC_present = 1
+  !> define number of PEC:
+  !> num_PEC
+  !> followed by coordinates of start points
+  !> PEC1 start x,y,z
+  !> PEC2 start x,y,z
+  !> PEC.. start x,y,z
+  !> PEC1 end x,y,z
+  !> PEC2 end x,y,z
+  !> PEC.. end x,y,z
   !---------------------------------------------------------------------
   subroutine define_PEC (PEC, num_PEC, PEC_start, PEC_end)
 
@@ -515,37 +541,69 @@ contains
 
     ! LOCAL variables
     integer :: allo_stat
+    integer :: i
     !-------------------------------------------------------------------
     ! Define PEC presence
 
     ! 1 (yes)
     ! 0 (no) - default
-
+    ! default
     PEC = 0
 
-    ! define number of PECs (borehole casings)
-    num_PEC = 2
+    ! Read from elfe3D_input.txt
+    ! open the file
+    open (in_unit, file = trim(FileName), status='old', &
+                   action = 'read', iostat = opening)
 
-    if (PEC == 1) then
-        ! allocate
-        allocate (PEC_start(num_PEC,3), PEC_end(num_PEC,3), &
-                  stat = allo_stat)
-        call allocheck(log_unit, allo_stat, &
-                       "define_output: error allocating PEC variables")
-
-
-        ! start and endpoint 
-        ! (or later for non-straight PECs corner points) of PEC line
-        ! x-coordinate
-        PEC_start(:,1) = (/150.0_dp, -45.0_dp/)
-        ! y-coordinate  
-        PEC_start(:,2) = (/0.0_dp, 0.0_dp/)
-        ! z-coordinate
-        PEC_start(:,3) = (/-100.0_dp, -100.0_dp/)
-        PEC_end(:,1) = (/150.0_dp, -45.0_dp/)
-        PEC_end(:,2) = (/0.0_dp, 0.0_dp/)
-        PEC_end(:,3) = (/-500.0_dp, -500.0_dp/)
-
+    ! was opening successful?
+    if (opening /= 0) then
+        call Write_Error_Message(log_unit, &
+        'define_solver: file '//trim(FileName)//' could not be opened')
+    else
+       ! read parameters
+       read (unit=in_unit, fmt=lfm, iostat=ReadCode) ctmp
+       line_read_loop: do while (ReadCode == 0)
+          ! PEC 
+          if (index(ctmp,'PEC_present') > 0) then
+             bwrd = BegWrd(ctmp,2)
+             ewrd = EndWrd(ctmp,2)
+             read (unit=ctmp(bwrd:ewrd),fmt=*,iostat=ctmpCode) PEC
+             if ((ctmpCode /= 0) .or. (PEC < 0) .or. (PEC > 1)) then
+                call Check_Input(log_unit, 'PEC_present')
+             end if
+          ! num_PEC 
+          else if (index(ctmp,'num_PEC') > 0) then
+             bwrd = BegWrd(ctmp,2)
+             ewrd = EndWrd(ctmp,2)
+             read (unit=ctmp(bwrd:ewrd),fmt=*,iostat=ctmpCode) num_PEC
+             if ((ctmpCode /= 0) .or. (num_PEC < 0)) then
+                call Check_Input(log_unit, 'num_PEC')
+             end if
+             ! allocate space fuer PEC coordinates
+             if (PEC == 1) then
+               ! allocate
+               allocate (PEC_start(num_PEC,3), PEC_end(num_PEC,3), &
+                         stat = allo_stat)
+               call allocheck(log_unit, allo_stat, &
+                         "define_PEC: error allocating PEC variables")
+               ! read PEC start and end coordinates
+               do i = 1,num_PEC
+                 read (in_unit,*) PEC_start(i,1), &
+                                  PEC_start(i,2), &
+                                  PEC_start(i,3)
+               end do 
+               do i = 1,num_PEC
+                 read (in_unit,*) PEC_end(i,1), &
+                                  PEC_end(i,2), &
+                                  PEC_end(i,3)
+               end do 
+             end if
+          end if  
+          ! read next line
+          read (unit=in_unit, fmt=lfm, iostat=ReadCode) ctmp
+       end do line_read_loop
+       ! close input file
+       close (unit = in_unit)
     end if
    !--------------------------------------------------------------------
   end subroutine define_PEC
@@ -554,6 +612,7 @@ contains
   !---------------------------------------------------------------------
   !> @brief
   !> subroutine for defining output files
+  !> Define the following in input file: output_E_file, output_E_file
   !---------------------------------------------------------------------
   subroutine define_output (EFile, HFile, num_rec)
   
@@ -617,6 +676,9 @@ contains
   !---------------------------------------------------------------------
   !> @brief
   !> subroutine for defining frequencies
+  !> Define the following in input file: 
+  !> num_freq                1
+  !> followed by a list of frequencies
   !---------------------------------------------------------------------
 
   subroutine define_freq (Nfreq, freq)
@@ -673,6 +735,9 @@ contains
   !---------------------------------------------------------------------
   !> @brief
   !> subroutine for defining model_size
+  !> Define the following in input file below keyword model_size
+  !> minimum x,y,z
+  !> maximum x,y,z
   !---------------------------------------------------------------------
   subroutine define_model_size (x_min, x_max, &
                                 y_min, y_max, &
@@ -715,6 +780,9 @@ contains
   !---------------------------------------------------------------------
   !> @brief
   !> subroutine for defining receiver locations
+  !> Define the following in input file: 
+  !> num_rec
+  !> followed by a list of receiver coordinates x,y,z
   !---------------------------------------------------------------------
   subroutine define_rec (M, num_rec, a, b, c, d, Ve, u1, v1, w1, &
                          rec1_el)
@@ -808,11 +876,11 @@ contains
 
         if (bc_nd1 .gt. 0.0_dp .and. bc_nd1 .lt. 1.0_dp .and. & ! node1
 
-           bc_nd2 .gt. 0.0_dp .and. bc_nd2 .lt. 1.0_dp .and. & ! node2
+            bc_nd2 .gt. 0.0_dp .and. bc_nd2 .lt. 1.0_dp .and. & ! node2
+ 
+            bc_nd3 .gt. 0.0_dp .and. bc_nd3 .lt. 1.0_dp .and. & ! node3
 
-           bc_nd3 .gt. 0.0_dp .and. bc_nd3 .lt. 1.0_dp .and. & ! node3
-
-           bc_nd4 .gt. 0.0_dp .and. bc_nd4 .lt. 1.0_dp) then  ! node4
+            bc_nd4 .gt. 0.0_dp .and. bc_nd4 .lt. 1.0_dp) then  ! node4
 
             rec1_el(l) = i
 
