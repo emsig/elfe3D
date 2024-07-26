@@ -285,10 +285,7 @@ program elfe3d
   character(len = 50) :: StringStep, StringEnding
 
   ! time testing
-  real(kind=dp) :: start, finish, seconds, seconds_assembly, seconds_solve
-
-  ! memory testing
-  real(kind=dp) :: mem, mem_pardiso
+  real(kind=dp) :: start, finish, seconds,seconds_solve
 
   ! solver type
   integer :: solver
@@ -425,8 +422,6 @@ program elfe3d
   deallocate(x,y,z)
 
   ! Get region attributes from eleattr and assign to model parameters
-  ! PR: schauen, wie das in EMILIA gehandhabt wird und fuer komplexere 
-  ! modelle umschreiben
   call read_model_param(eleattr, M, rho, mu)
   
   call Write_Message (log_unit, '*************************************')
@@ -833,7 +828,7 @@ program elfe3d
        seconds_solve = omp_get_wtime ( ) ! timing solve
 
        call PARDISO_solving (E, Agcsr_oo, jAgcsr_oo, iAgcsr_o, RHS, &
-                             Solution, mem_pardiso)
+                             Solution)
 
        seconds_solve = omp_get_wtime ( ) - seconds_solve;
 
@@ -1029,7 +1024,6 @@ program elfe3d
      if (terminationCrit == 0) then
         call calculate_elemental_volume_constraints (M, refStep, Ve, &
                                                      betaRef, errorEst,&
-                                                     eleattr, &
                                                      MeshFileName, &
                                                      NewVolumeFile)
 
