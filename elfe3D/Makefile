@@ -91,7 +91,7 @@ ifeq (${FCC},gfortran)
 # for Linux
 ifeq (${OS},Linux)
 # for MUMPS
-OBJUTIL = -L/usr/local/lib -L$(LIBDIR) -lopenblas -lpthread -lm -lzmumps -lmumps_common -lesmumps -lpord -lmpiseq -L/usr/lib -lscotch -lmetis
+OBJUTIL = -L/usr/local/lib -L$(LIBDIR) -lpthread -lm -lzmumps -lmumps_common -lesmumps -lpord -lmpiseq -L/usr/lib -lscotch -lmetis -lopenblas
 endif
 
 
@@ -101,7 +101,7 @@ OMPLIB = -lgomp
 FFLAGS = -O2 -march=native -mtune=native -mfma -malign-data=cacheline -std=f2008 -ffree-form -ffree-line-length-none -pedantic -Wall -Wsurprising -Wopenmp-simd -Wvector-operation-performance -ftree-vectorize -ftree-vectorizer-verbose=2 -fopt-info-vec -fopenmp -I/usr/include  -fall-intrinsics
 
 # compile-time directives (for preprocessor etc.)
-COMPFLAGS = -x f95-cpp-input -DDEBUG -g
+COMPFLAGS = -x f95-cpp-input
 endif
 ##-------------------------------------------------------------------------------------
 
@@ -149,6 +149,5 @@ endif
 # for Mac OS X
 ifeq (${OS},Darwin)
 clean:
-	-\rm *.o *.mod in/*.vol
+	-\rm *.o *.mod in/*.vol 
 endif
-
