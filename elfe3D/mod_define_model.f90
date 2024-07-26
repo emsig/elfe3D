@@ -316,54 +316,6 @@ contains
 
   !---------------------------------------------------------------------
   !> @brief
-  !> subroutine for defining model parameters called from read_model_param
-  !---------------------------------------------------------------------
-
-  subroutine define_model_parameters(res_2, mu_r_2, res_3, mu_r_3, res_4, mu_r_4, res_5, mu_r_5, res_6, mu_r_6, res_7, mu_r_7, res_8, mu_r_8, res_9, mu_r_9)
-  
-    ! OUTPUT
-    real(kind=dp), intent(out) :: res_2, mu_r_2, res_3, mu_r_3, res_4, mu_r_4, res_5, mu_r_5, res_6, mu_r_6, res_7, mu_r_7, res_8, mu_r_8, res_9, mu_r_9
-
-    !-------------------------------------------------------------------
-    ! Define model parameters (resistivity res and magnetic permeability mu_r) at attributes
-
-    ! attribute 2 - only this is used, however routine expects 4 input attributes
-    res_2 = 1000.0_dp 
-    mu_r_2 = 1.0_dp
-
-    ! attribute 3
-    res_3 = 10.0_dp
-    mu_r_3 = 1.0_dp
-
-    ! attribute 4
-    res_4 = 1000.0_dp
-    mu_r_4 = 1.0_dp
-
-    ! attribute 5
-    res_5 = 0.0_dp
-    mu_r_5 = 1.0_dp
-
-    ! attribute 6
-    res_6 = 0.0_dp
-    mu_r_6 = 1.0_dp
-
-    ! attribute 7
-    res_7 = 0.0_dp
-    mu_r_7 = 1.0_dp
-
-    ! attribute 8
-    res_8 = 0.0_dp
-    mu_r_8 = 1.0_dp
-
-    ! attribute 9
-    res_9 = 0.0_dp
-    mu_r_9 = 1.0_dp
-
-   !--------------------------------------------------------------------
-  end subroutine define_model_parameters
-
-  !---------------------------------------------------------------------
-  !> @brief
   !> subroutine for defining size of the source
   !>
   !> Define the following in input file:
@@ -619,11 +571,7 @@ contains
     ! OUTPUT
     character(len = 500), intent(out) :: EFile, HFile
     integer, intent(out) :: num_rec
-
-    ! LOCAL variables
-    ! integer :: i
-    integer :: allo_stat
-
+    
     !-------------------------------------------------------------------
     ! Read from elfe3D_input.txt
     ! open the file
