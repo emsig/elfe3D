@@ -61,7 +61,7 @@ contains
     
 
     ! LOCAL variables
-    integer :: i, l
+    integer :: l
     ! edges of the element containing receiver
     integer, dimension(6) :: rec1_ed 
     real(kind=dp), dimension(3) :: grad_Lstart ! grad Lstart
