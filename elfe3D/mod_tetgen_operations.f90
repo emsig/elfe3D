@@ -36,7 +36,6 @@ contains
    subroutine calculate_elemental_volume_constraints (M, refStep, Ve, &
                                                       betaRef, &
                                                       errorEst, &
-                                                      attr, &
                                                       StringName, &
                                                       NewVolumeFile)
   
@@ -51,8 +50,6 @@ contains
      real(kind=dp), intent(in) :: betaRef
      ! elemental error estimator
      real(kind=dp), dimension(:), intent(in) :: errorEst
-     ! element attribute array
-     integer, dimension(:), intent(in) :: attr
      ! array containing receiver-element numbers
      !integer, dimension(:), intent(in) :: rec1_el
      character(len = 50), intent(in) :: StringName
