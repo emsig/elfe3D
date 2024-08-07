@@ -23,7 +23,7 @@ _Getting started:_
 - MUMPS is an open source direct solver available at https://mumps-solver.org. Read the MUMPS documentation for compiling instructions. Link the MUMPS libaries in your makefile. In the code documentation you find detailed instructions to install and link MUMPS on an Ubuntu system.
 - Modify your makefile as appropriate.
 - Compile with `make all`.
-- Adjust your input file `in/elfe3D_input_txt`.
+- Adjust your input file `in/elfe3D_input.txt`.
 - Run tetgen to generate your mesh input files.
 - Run **elfe3D** by typing `.\elfe3d` in your terminal.
 
