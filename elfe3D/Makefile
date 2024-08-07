@@ -1,5 +1,4 @@
 # choose compiler
-#FCC = ifort
 FCC = gfortran
 
 # determine operating system
@@ -35,77 +34,28 @@ OBJ =   mod_constant.o \
 
 
 ##-------------------------------------------------------------------------------------
-##-------------------------------------------------------------------------------------
 # Section with compiler flags for shared library and compiler options
-# Shared libraries:
-#   BLAS
-#   LAPACK
-#   MUMPS
-#   SCOTcH
-#   METIS
-
-##-------------------------------------------------------------------------------------
-##
-## for Intel Fortran
-##
-ifeq (${FCC},ifort)
-# for Linux
-ifeq (${OS},Linux)
-ifeq (${ARCH},x86_64)
-# for Intel Fortran
-OBJUTIL = -L$(LIBDIR) -L${MKLROOT}/lib/intel64 -lmkl_intel_ilp64 -lmkl_sequential -lmkl_core -lpthread -lm -ldl
-endif
-ifeq (${ARCH},i686)
-OBJUTIL = -L/usr/local/lib -L$(LIBDIR)
-endif
-endif
-# for Mac OS X
-ifeq (${OS},Darwin)
-OBJUTIL = -L/usr/local/lib -L$(LIBDIR) 
-endif
-
-# OpenMP library
-OMPLIB = 
-
-# for Intel Fortran
-FFLAGS = -g -debug all -ftrapuv -traceback -debug inline-debug-info -check all -fpe0 -stand f08 -warn interfaces -warn usage -warn all -diag-enable warn -profile-functions -profile-loops=all -profile-loops-report=2 -assume norealloc_lhs -I/usr/local/include -I$(MKLROOT)/include -qopenmp -mkl=sequential
-
-# compile-time directives (for preprocessor etc.)
-# for Linux
-ifeq (${OS},Linux)
-ifeq (${ARCH},x86_64)
-COMPFLAGS = -fpp -DIFORT -DDEBUG
-endif
-endif
-# for Mac OS X
-ifeq (${OS},Darwin)
-COMPFLAGS = -fpp -DIFORT -DDEBUG
-endif
-endif
-
-##-------------------------------------------------------------------------------------
 ##
 ## for gfortran
 ##
 ifeq (${FCC},gfortran)
-# for Linux
 ifeq (${OS},Linux)
-# for MUMPS
+# link MUMPS libaries here!
 OBJUTIL = -L/usr/local/lib -L$(LIBDIR) -lpthread -lm -lzmumps -lmumps_common -lesmumps -lpord -lmpiseq -L/usr/lib -lscotch -lmetis -lopenblas
 endif
-
 
 # OpenMP library
 OMPLIB = -lgomp
 
-FFLAGS = -O2 -march=native -mtune=native -mfma -malign-data=cacheline -std=f2008 -ffree-form -ffree-line-length-none -pedantic -Wall -Wsurprising -Wopenmp-simd -Wvector-operation-performance -ftree-vectorize -ftree-vectorizer-verbose=2 -fopt-info-vec -fopenmp -I/usr/include  -fall-intrinsics
+# compiler flags
+FFLAGS = -O2 -march=native -mtune=native -mfma -malign-data=cacheline -std=f2008 -ffree-form -ffree-line-length-none -ftree-vectorize -ftree-vectorizer-verbose=2 -fopt-info-vec -fopenmp -I/usr/include -fall-intrinsics
+# for warnings you can include here: 
+# -pedantic -Wall -Wopenmp-simd -Wvector-operation-performance
 
 # compile-time directives (for preprocessor etc.)
 COMPFLAGS = -x f95-cpp-input
 endif
 ##-------------------------------------------------------------------------------------
-
-
 #
 #  Default command.
 #
@@ -141,13 +91,8 @@ all: $(OBJ)
 
 # clean up
 .PHONY: clean
-# for Linux
+
 ifeq (${OS},Linux)
 clean:
 	-\rm *.o *.mod in/*.vol
-endif
-# for Mac OS X
-ifeq (${OS},Darwin)
-clean:
-	-\rm *.o *.mod in/*.vol 
 endif
