@@ -3,7 +3,7 @@
 You can find a figure showing the model in 
 elfe3D/docs/PhD_thesis_Rulff_Kappa.pdf
 on page 55.
-You can the example to understand how to run fwd 
+You can the example to understand how to run
 simulations and refinement with elfe3D.
 The original elfe3D_input file contains all 
 specifications to run this example.
