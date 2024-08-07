@@ -9,8 +9,6 @@ _Contributions:_
 
 A first version of **elfe3D** was developed by Paula Rulff with contributions from Laura Maria Buntin and Thomas Kalscheuer at Uppsala University from 2018-2023.
 
-A modified version of **elfe3D** is implemented in the inversion software emilia (cite).
-
 Further developments of **elfe3D** by Paula Rulff, now at Delft University of Technology, are ongoing. Suggestions for improvements are welcome!
 
 _Contact_: p.rulff@tudelft.nl
