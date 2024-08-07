@@ -17,15 +17,8 @@ _Contact_: p.rulff@tudelft.nl
 
 _Getting started:_
 
-- gfortran should be part of your system via the gnu compiler collection (gcc). Intel Fortran compilation is possible, but not fully tested.
-- OpenBLAS and make packages are required.
-- tetgen: The open source mesh generator tetgen must be installed. It can be downloaded from http://wias-berlin.de/software/index.jsp?id=TetGen&lang=1#Download or via `sudo apt install tetgen` on Ubuntu.
-- MUMPS is an open source direct solver available at https://mumps-solver.org. Read the MUMPS documentation for compiling instructions. Link the MUMPS libaries in your makefile. In the code documentation you find detailed instructions to install and link MUMPS on an Ubuntu system.
-- Modify your makefile as appropriate.
-- Compile with `make all`.
-- Adjust your input file `in/elfe3D_input.txt`.
-- Run tetgen to generate your mesh input files.
-- Run **elfe3D** by typing `./elfe3d` in your terminal.
+You find the **elfe3D** instalation instructions in `docs/elfe3D_manual.pdf`
+Note that, the open source mesh generator tetgen and the direct solver MUMPS must be installed additionally.
 
 _Credits:_
 
