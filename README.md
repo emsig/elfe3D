@@ -15,7 +15,7 @@ _Contact_: p.rulff@tudelft.nl
 
 _Getting started:_
 
-You find the **elfe3D** instalation instructions in `docs/elfe3D_manual.pdf`
+You find the **elfe3D** instalation instructions in `elfe3D/README.md`
 Note that, the open source mesh generator tetgen and the direct solver MUMPS must be installed additionally.
 
 _Credits:_
