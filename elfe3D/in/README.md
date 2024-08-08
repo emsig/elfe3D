@@ -1,22 +1,22 @@
-###############################################
+--------------------------------------------
 
-*Meshing*
+# Meshing
 
-###############################################
+--------------------------------------------
 
 Run tetgen to generate your mesh files from .poly file
 
 e.g.: tetgen -pq1.3kAaen CSEM_input_model.poly 
 
-###############################################
+--------------------------------------------
 
-*'CSEM_input_model'*
+# `CSEM_input_model.poly`
 
 is an example model.
 
 You can find a figure showing the model in 
 
-`elfe3D/docs/PhD_thesis_Rulff_Kappa.pdf`
+`elfe3D/PhD_thesis_Rulff_Kappa.pdf`
 
 on page 55.
 
@@ -30,7 +30,7 @@ in the `elfe3D/in` directory.
 
 e.g.: `tetgen -pq1.3kAaen CSEM_input_model.poly`
 
-###############################################
+--------------------------------------------
 
 Model specifications:
 
