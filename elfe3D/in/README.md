@@ -1,23 +1,35 @@
 ###############################################
-Meshing
+
+*Meshing*
+
 ###############################################
 
 Run tetgen to generate your mesh files from .poly file
+
 e.g.: tetgen -pq1.3kAaen CSEM_input_model.poly 
 
 ###############################################
-'CSEM_input_model' is an example model.
+
+*'CSEM_input_model'*
+
+is an example model.
+
 You can find a figure showing the model in 
-elfe3D/docs/PhD_thesis_Rulff_Kappa.pdf
+
+`elfe3D/docs/PhD_thesis_Rulff_Kappa.pdf`
+
 on page 55.
-You can the example to understand how to run
+
+You can use the example to understand how to run
 simulations and refinement with elfe3D.
 The original elfe3D_input file contains all 
 specifications to run this example.
 Only the mesh files have to be generated from
-CSEM_input_model.poly via calling tetgen
-in the elfe3D/in directory.
-e.g.: tetgen -pq1.3kAaen CSEM_input_model.poly
+`CSEM_input_model.poly` via calling tetgen
+in the `elfe3D/in` directory.
+
+e.g.: `tetgen -pq1.3kAaen CSEM_input_model.poly`
+
 ###############################################
 
 Model specifications:
@@ -25,7 +37,7 @@ Model specifications:
 modelling domain: 30 x 30 x 30 km
 z positive upwards
 
-CSEM_input_model.poly file is the input file 
+`CSEM_input_model.poly` file is the input file 
 for the mesh generator tetgen.
 It contains the starting nodes, facets and regions, 
 that are the basis for mesh generation and model
@@ -44,7 +56,9 @@ The source is along 5 m long edge segments.
 source moment = 1
 
 anomaly coordinates: 
+
 x y z
+
 900 -100 -600                            
 1100 -100 -600                             
 1100 -100 -200                           
@@ -64,19 +78,28 @@ region attributes and resistivities:
 To run refinement:
 
 generate initial mesh with 
-e.g. tetgen -pq1.6kAaen CSEM_input_model.poly 
+e.g. `tetgen -pq1.6kAaen CSEM_input_model.poly` 
 
-choose one frequency in elfe3D_input.txt
+choose one frequency in `elfe3D_input.txt`
+
 e.g. 10 Hz
 
-adjust refinement parameters in elfe3D_input.txt
-e.g.
+adjust refinement parameters in `elfe3D_input.txt`
+
+e.g. 
+
 maxRefSteps             10
+
 maxUnknowns             10000000  
+
 betaRef                 0.85
+
 accuracyTol             0.00003
+
 vtk                     1
+
 errorEst_method         4
+
 refStrategy             1
 
 
