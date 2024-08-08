@@ -1,0 +1,12 @@
+*.face
+*.neigh
+*.node
+*.vtk
+*.edge
+*.ele
+*.o
+*.mod
+*.vol
+*.txt
+*.h
+elfe3D/elfe3d
