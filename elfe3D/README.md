@@ -154,7 +154,9 @@ Input files for `elfe3D` are located in `elfe3D/in`:
 
 You find an examplary 3D CSEM resistivity model in `elfe3D/in`. Information about the model are in `elfe3D/in/readme.md`.
 
-![modelling-procedure](https://github.com/user-attachments/assets/4cfb2b9f-b47f-4541-8aef-257ea3be4ae2) 
+![modelling-preocedure](https://github.com/user-attachments/assets/00786ebb-0e5c-4485-9918-864296fa38d6)
+
+
 > Key steps of the FE forward modelling procedure including the choice of a subsurface model and source-receiver setup (Step I), the initial meshing of the modelling domain (Step II), the mesh refinement (Step III) and the validation against a reference solution (Step IV). The reference solution for this example was computed with `PETGEM` [Castillo-Reyes et al. (2018)](#references) using third order interpolation functions. Figure and caption from [Rulff (2023)](#references).
 
 ### Output
@@ -162,11 +164,12 @@ You find an examplary 3D CSEM resistivity model in `elfe3D/in`. Information abou
 Output files and reference forward responses for the example model are located in `/out`.
 
 The output files will contain columns with frequencies and real and imaginary electric or magnetic field components:
-
-frequency | Ex | Ey | Ez
-
-frequency | Hx | Hy | Hz
-
+```
+frequency  Ex  Ey  Ez
+```
+```
+frequency  Hx  Hy  Hz
+```
 They are either grouped via the same frequencies `output_E/H_file_receiver_line` or via the same receiver locations `output_E/H_file`. Ordering is always with increaseing receiver number.
 
 
@@ -183,7 +186,7 @@ If you publish results generated with **elfe3D**, please give credit to the **el
 
 and refer to the **elfe3D** version you used with the ZENODO DOI: Link to Zenodo DOI
 
-Do not forget to acknowledge MUMPS and tetgen developers!
+Do not forget to acknowledge `MUMPS` and `tetgen` developers!
 
 The code development was financed by the Smart Exploration project (European Union’s Horizon 2020 funding, grant agreement No. 775971).
 
