@@ -175,7 +175,7 @@ They are either grouped via the same frequencies `output_E/H_file_receiver_line`
 
 ## Citation
 
-If you publish results generated with **elfe3D**, please give credit to the **elfe3D** developers by citing:
+If you publish results generated with `elfe3D`, please give credit to the `elfe3D` developers by citing:
 
 > **Paula Rulff, Laura M Buntin, Thomas Kalscheuer**, 
 > *Efficient goal-oriented  mesh refinement in 3-D finite-element 
@@ -183,7 +183,7 @@ If you publish results generated with **elfe3D**, please give credit to the **el
 > Geophysical Journal International, Volume 227, Issue 3, 
 > December 2021, Pages 1624–1645, https://doi.org/10.1093/gji/ggab264
 
-and refer to the **elfe3D** version you used with the ZENODO DOI: Link to Zenodo DOI
+ and refer to the `elfe3D` version you used via the ZENODO DOI: https://doi.org/10.5281/zenodo.13309721
 
 Do not forget to acknowledge `MUMPS` and `tetgen` developers!
 
