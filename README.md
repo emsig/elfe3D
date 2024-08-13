@@ -27,6 +27,6 @@ Paula Rulff, Laura M Buntin, Thomas Kalscheuer, Efficient goal-oriented  mesh re
 
 and refer to the **elfe3D** the version you used via the ZENODO DOI.
 
-Do not forget to acknowledge MUMPS and tetgen developers!
+Do not forget to acknowledge `MUMPS` and `tetgen` developers!
 
 The code development was financed by the Smart Exploration project (European Union’s Horizon 2020 funding, grant agreement No. 775971).
