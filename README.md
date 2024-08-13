@@ -25,7 +25,7 @@ If you publish results generated with **elfe3D**, please give credit to the **el
 Paula Rulff, Laura M Buntin, Thomas Kalscheuer, Efficient goal-oriented  mesh refinement in 3-D finite-element modelling adapted for controlled source electromagnetic surveys, Geophysical Journal International, Volume 227, Issue
 3, December 2021, Pages 1624–1645, https://doi.org/10.1093/gji/ggab264
 
-and refer to the **elfe3D** the version you used with the ZENODO DOI: Link to Zenodo DOI
+and refer to the **elfe3D** the version you used via the ZENODO DOI.
 
 Do not forget to acknowledge MUMPS and tetgen developers!
 
