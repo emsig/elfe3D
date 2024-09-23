@@ -7,7 +7,7 @@ _About:_
 
 _Contributions:_
 
-An earlier version of `elfe3D` was developed by Paula Rulff with contributions from Laura Maria Buntin and Thomas Kalscheuer at Uppsala University from 2018-2023 financed by the Smart Exploration project (European Union’s Horizon 2020 funding, grant agreement No. 775971).
+An earlier version of the code that `elfe3D` is based on was developed by Paula Rulff with contributions from Laura Maria Buntin and Thomas Kalscheuer at Uppsala University from 2018-2023 financed by the Smart Exploration project (European Union’s Horizon 2020 funding, grant agreement No. 775971).
 
 The present version of `elfe3D` was released in 2024 under the Apache License, Version 2.0. Further developments of `elfe3D` by Paula Rulff, now at Delft University of Technology, are ongoing. Suggestions for improvements are welcome!
 
