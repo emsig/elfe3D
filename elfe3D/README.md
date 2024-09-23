@@ -11,9 +11,8 @@ To balance problem sizes and solution accuracy, adaptive mesh refinement approac
 
 `elfe3D` is designed in modern `Fortran` and uses shared-memory parallelisation with `OpenMP`. The system of equations is solved with a direct solver. Isotropic electric resistivities and magnetic permeabilities are variable model parameters. Extended line or loop sources are modelled along element edges.
 
-A first version of `elfe3D` was developed by Paula Rulff with contributions from Laura Maria Buntin and Thomas Kalscheuer at Uppsala University from 2018-2023. The code development was financed by the Smart Exploration project (European Union's Horizon 2020 funding, grant agreement No. 775971).
-
-A modified version of `elfe3D` is implemented in the inversion software `emilia` ([Kalscheuer et al. (2008); Kalscheuer et al. (2010); Kalscheuer et al. (2025); Rulff and Kalscheuer (2024)](#references)) available upon request for purely academic purposes from Thomas Kalscheuer (thomas.kalscheuer@geo.uu.se).
+An earlier version of `elfe3D` was developed by Paula Rulff with contributions from Laura Maria Buntin and Thomas Kalscheuer at Uppsala University from 2018-2023. The initial code development was financed by the Smart Exploration project (European Union's Horizon 2020 funding, grant agreement No. 775971).
+This earlier version of `elfe3D` is implemented in the inversion software `emilia` ([Kalscheuer et al. (2008); Kalscheuer et al. (2010); Kalscheuer et al. (2025); Rulff and Kalscheuer (2024)](#references)) available upon request for purely academic purposes from Thomas Kalscheuer (thomas.kalscheuer@geo.uu.se).
 
 Further developments of `elfe3D` by Paula Rulff, now at Delft University of Technology, are ongoing. Suggestions for improvements are welcome via p.rulff@tudelft.nl.
 
