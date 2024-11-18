@@ -2661,5 +2661,5 @@ GENERATE_LEGEND        = YES
 
 DOT_CLEANUP            = YES
 
-INPUT += README.md
+INPUT += ..\elfe3D\README.md
 FILE_PATTERNS += *.md *.markdown
