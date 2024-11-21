@@ -7,7 +7,7 @@ Modelling with the total **el**ectric field approach using **f**inite **e**lemen
 ## About
 `elfe3D` is a 3D forward modelling code that simulates electric and magnetic field responses from frequency-domain controlled-source electromagnetic setups. It uses tetrahedral meshes and first-order finite-element approximations. `elfe3D` was validated in [Rulff et al. (2021)](#references).
 
-To balance problem sizes and solution accuracy, adaptive mesh refinement approaches are implemented. They are based on error estimators that consist of face jumps in the normal current density, face jums in the tangential magnetic field and residuals and can be combined with amplitude-dependent weights. Global mesh quality improvement ($q$-refinement) can be applied during the refinement procedure. See [Rulff et al. (2021); Castillo-Reyes et al. (2023); Rulff (2023)](#references) for details.
+To balance problem sizes and solution accuracy, adaptive mesh refinement approaches are implemented. They are based on error estimators that consist of face jumps in the normal current density, face jumps in the tangential magnetic field and residuals and can be combined with amplitude-dependent weights. Global mesh quality improvement ($q$-refinement) can be applied during the refinement procedure. See [Rulff et al. (2021); Castillo-Reyes et al. (2023); Rulff (2023)](#references) for details.
 
 `elfe3D` is designed in modern `Fortran` and uses shared-memory parallelisation with `OpenMP`. The system of equations is solved with a direct solver. Isotropic electric resistivities and magnetic permeabilities are variable model parameters. Extended line or loop sources are modelled along element edges.
 
