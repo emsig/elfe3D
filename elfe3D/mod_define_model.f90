@@ -510,7 +510,7 @@ contains
     ! was opening successful?
     if (opening /= 0) then
         call Write_Error_Message(log_unit, &
-        'define_solver: file '//trim(FileName)//' could not be opened')
+        'define_PEC: file '//trim(FileName)//' could not be opened')
     else
        ! read parameters
        read (unit=in_unit, fmt=lfm, iostat=ReadCode) ctmp
