@@ -104,3 +104,17 @@ errorEst_method         4
 refStrategy             1
 
 
+--------------------------------------------
+
+# `CSEM_input_model_PEC.poly`
+is the same model as above, but includes a Perfect Electric Conductor at 315 m along the receiver line.
+
+If you want to run this model, adjust the input mesh file in `elfe3D_input.txt` and the PEC-related parameters as follows:
+
+PEC_present             1
+
+num_PEC                 1
+
+315.0 0.0    0.0
+
+315.0 0.0 -500.0
