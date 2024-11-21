@@ -88,11 +88,9 @@ source_type             6
 current_direction       1
 source_moment           1
 PEC_present             0
-num_PEC                 2
-150.0 0.0 -100.0
--45.0 0.0 -100.0
-150.0 0.0 -500.0
--45.0 0.0 -500.0
+num_PEC                 1
+300.0 0.0    0.0
+300.0 0.0 -500.0
 model_file_name         in/CSEM_input_model.
 maxRefSteps             0
 maxUnknowns             10000000  
