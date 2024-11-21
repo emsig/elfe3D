@@ -44,7 +44,8 @@ that are the basis for mesh generation and model
 parameter assignment.
 
 receivers: 200 m to 2000 m in x-direction, every 25 m
-I put my receivers in small tetrahedra to ensure accurate
+
+I put the receivers in small tetrahedra to ensure accurate
 responses at the receiver sites. 
 Thats why I allocate triangle facets for the receiver sites
 at the air-earth interface
