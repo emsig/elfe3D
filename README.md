@@ -21,7 +21,7 @@ If you would like to contribute to `elfe3D`, report issues with `elfe3D` or seek
 
 _Getting started:_
 
-You find the `elfe3D` manual including instalation instructions in `elfe3D/elfe3D/README.md`.
+You find the `elfe3D` source code in `elfe3D/elfe3D/` and the manual including instalation instructions in `elfe3D/elfe3D/README.md`.
 `elfe3D` can be compiled with the provided Makefile.
 Note that, the open source mesh generator `tetgen` and the direct solver `MUMPS` must be installed additionally.
 
