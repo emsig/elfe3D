@@ -27,7 +27,7 @@ Note that, the open source mesh generator `tetgen` and the direct solver `MUMPS`
 
 _Tests:_
 
-The mesh file of an example model is located in `elfe3D/elfe3D/in` and reference solutions for this example in `elfe3D/elfe3D/out/reference_solution`. You can use both to test, if the code compiled properly and produces the expected results.
+The mesh file of an example model is located in `elfe3D/elfe3D/in` and reference solutions for this example in `elfe3D/elfe3D/out`. You can use both to test, if the code compiled properly and produces the expected results.
 
 
 _Credits:_
