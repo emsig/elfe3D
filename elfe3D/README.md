@@ -109,7 +109,7 @@ Input files for `elfe3D` are located in `elfe3D/in`:
 
   - `PEC_present`: Followed by an integer that specifies the presence of a perfect electric conductor (PEC). See [Castillo-Reyes et al. (2023)](#references) for more information. No PEC present (0), PEC present (1).
 
-  - `num_PEC`: Followed by the number of PECs with start and end coordinates below.
+  - `num_PEC`: Followed by the number of PECs with start and end coordinates below. Choose the start and end values for the z-coordinate in a way that z_start is always the larger number.
 
   - `model_file_name`: Specify the path and filename of the model input file, without file name extension, but with a . at the end.
 
