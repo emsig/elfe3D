@@ -25,6 +25,10 @@ You find the `elfe3D` source code in `elfe3D/elfe3D/` and the manual including i
 `elfe3D` can be compiled with the provided Makefile.
 Note that, the open source mesh generator `tetgen` and the direct solver `MUMPS` must be installed additionally.
 
+_Tests:_
+The mesh file of an example model is located in `elfe3D/elfe3D/in` and reference solutions for this example in `elfe3D/elfe3D/out/reference_solution`. You can use both to test, if the code compiled properly and produces the expected results.
+
+
 _Credits:_
 
 If you publish results generated with `elfe3D`, please give credit to the `elfe3D` developers by citing:
