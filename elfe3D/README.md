@@ -49,6 +49,7 @@ The following steps guide you through the `elfe3D` compilation:
   Short example of `MUMPS_5.7.3` compilation:
 
   ``` bash
+  $ wget https://mumps-solver.org/MUMPS_5.7.3.tar.gz
   $ tar zxvf MUMPS_5.7.3.tar.gz
   $ cd MUMPS_5.7.3
   $ cp Make.inc/Makefile.debian.SEQ Makefile.inc
