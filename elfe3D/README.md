@@ -76,6 +76,12 @@ The following steps guide you through the `elfe3D` compilation:
   $ make all
   ```
 
+- `elfe3D` uses OpenMP parallelisation. If it is allowed to use all available threads by default, the performance might drop due to oversubscription. Ensure that `elfe3D` uses a number of threads that suits the problem you want to solve by setting:
+
+  ``` bash
+  $ OMP_NUM_THREADS= (max. total number of CPUs you have)
+  ```
+
 - Run `elfe3D` with
 
   ``` bash
