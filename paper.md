@@ -28,7 +28,7 @@ The controlled-source electromagnetic method is a geophysical technique that det
 
 # Statement of need
 
-The numerical modelling program `elfe3D` calculates forward responses, i.e. electric and magnetic field components, for frequency-domain three-dimensional (3D) controlled-source electromagnetic surveys in geophysics [\ref{fig:example}]. 
+The numerical modelling program `elfe3D` calculates forward responses, i.e. electric and magnetic field components, for frequency-domain three-dimensional (3D) controlled-source electromagnetic surveys in geophysics [Figure \ref{fig:example}]. 
 The physical behavior of electromagnetic fields is described by Maxwell's equations, which serve as the foundation for the curl-curl equation in terms of the total electric field $\bf{E}$ that `elfe3D` is solving:
 
 $$\nabla \times \frac{1}{\mu} \nabla \times \mathbf{E} - i\omega \frac{1}{\rho} \mathbf{E} - \omega^2 \epsilon \mathbf{E}  = \color{black} i\omega \mathbf{J}_{p} \color{black} \quad \text{in} \quad \Omega,$$
@@ -59,7 +59,7 @@ The underlying code of `elfe3D` was developed between 2018-2023 and validated in
 Adaptively refined meshes and parts of the synthetic data reported in @Castillo-Reyes2023 were generated with `elfe3D`.
 The program is currently used to design surface-to-borehole controlled-source electromagnetic surveys for geothermal applications [@Rulff2024emiw].
 
-![Key steps of the forward modelling procedure including the choice of a subsurface model and source-receiver setup (Step I; note that the subsurface anomaly and survey setup are enlarged in the image for better visibility), the meshing of the modelling domain (Step II; note that a slice through the inner modelling domain is displayed) and the calculation of field responses with `elfe3D` (Step III; note that only the electric field component in x-direction (Ex) field component is displayed). Figure adapted from PhD thesis: @Rulff2023.\label{fig:example}](modelling-procedure-elfe3D.png){ width=90% }
+![Key steps of the forward modelling procedure including the choice of a subsurface model and source-receiver setup (Step I; note that the subsurface anomaly and survey setup are enlarged in the image for better visibility), the meshing of the modelling domain (Step II; note that a slice through the inner modelling domain is displayed) and the calculation of field responses with `elfe3D` (Step III; note that only the electric field component in x-direction (Ex) is displayed). Figure adapted from PhD thesis: @Rulff2023.\label{fig:example}](modelling-procedure-elfe3D.png){ width=90% }
 
 # Acknowledgements
 
