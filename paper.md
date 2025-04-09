@@ -28,7 +28,7 @@ The controlled-source electromagnetic method is a geophysical technique that det
 
 # Statement of need
 
-The numerical modelling program `elfe3D` calculates forward responses, i.e. electric and magnetic field components, for frequency-domain three-dimensional (3D) controlled-source electromagnetic surveys in geophysics. 
+The numerical modelling program `elfe3D` calculates forward responses, i.e. electric and magnetic field components, for frequency-domain three-dimensional (3D) controlled-source electromagnetic surveys in geophysics [\ref{fig:example}]. 
 The physical behavior of electromagnetic fields is described by Maxwell's equations, which serve as the foundation for the curl-curl equation in terms of the total electric field $\bf{E}$ that `elfe3D` is solving:
 
 $$\nabla \times \frac{1}{\mu} \nabla \times \mathbf{E} - i\omega \frac{1}{\rho} \mathbf{E} - \omega^2 \epsilon \mathbf{E}  = \color{black} i\omega \mathbf{J}_{p} \color{black} \quad \text{in} \quad \Omega,$$
