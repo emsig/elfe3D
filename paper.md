@@ -29,7 +29,7 @@ The controlled-source electromagnetic method is a geophysical technique that det
 # Statement of need
 
 Advanced and customisable forward modeling and inversion approaches are required to obtain resistivity models of the subsurface from electromagnetic geophysical data [@Rochlitz2019]. The purpose of `elfe3D` is to numerically calculate forward responses from subsurface models, i.e. electric and magnetic field components, for frequency-domain three-dimensional (3D) controlled-source electromagnetic surveys in geophysics [Figure \ref{fig:example}]. 
-Compared to standard electromagnetic geophysical simulation software, `elfe3D` excels in flexibility regarding subsurface properties and geometries as well as survey settings, i.e. receivers can be arbitrarily placed in the modelling domain and the electrical properties can be distributed in the subsurface upon model design. Implemented adaptive mesh refinement approaches can automatically design problem-specific meshes and optimise computational load and solution accuracy.
+Compared to standard electromagnetic geophysical simulation software, `elfe3D` excels in flexibility regarding subsurface properties and geometries as well as survey settings, i.e. receivers can be arbitrarily placed in the modelling domain and the electrical properties can be distributed in the subsurface upon model design. Implemented adaptive mesh refinement approaches can automatically design problem-specific meshes and balance computational load and solution accuracy.
 
 # State of the field
 
