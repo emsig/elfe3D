@@ -33,12 +33,13 @@ Compared to standard electromagnetic geophysical simulation software, `elfe3D` e
 
 # State of the field
 
-Standard strategies in electromagnetic modelling often avoid 3D simulations due to their substantial computational demands and the predominant focus tends to be on electrical resistivity models, as this material property is dominant at typical frequencies used in controlled-source electromagnetic surveys. The numerical techniques required to facilitate 3D simuations and their integration into controlled-source electromagnetic modelling code is currently a prominent area of academic research [Boerner2010] and some open-source codes became available in recent years [@Heagy2017; @Castillo-Reyes2018; @Rochlitz2019; @Werthmueller2019].
+Common strategies in electromagnetic modelling often avoid 3D simulations due to their substantial computational demands and the predominant focus tends to be on electrical resistivity models, as this material property is dominant at typical frequencies used in controlled-source electromagnetic surveys. The numerical techniques required to facilitate 3D simuations and their integration into controlled-source electromagnetic modelling code is currently a prominent area of academic research [Boerner2010] and some open-source codes became available in recent years [@Heagy2017; @Castillo-Reyes2018; @Rochlitz2019; @Werthmueller2019].
 
+Describe more
 
 # Special code capabilities
 
-In `elfe3D`, three state-of-the-art functionalities are combined. In summary, these features distinguish `elfe3D` from other available codes:
+In `elfe3D`, three special functionalities are combined. In summary, these features distinguish `elfe3D` from other available codes:
 
 1. **Variable Magnetic Permeability**: In traditional 3D electromagnetic forward modeling algorithms, magnetic permeability and dielectric permittivity are typically not considered variable model parameters. This oversight is often due to the relatively minor contrasts in these properties compared to conductivity contrasts prevalent in most geological environments at frequencies in the Hz- to kHz-range. However, it is well documented that mineralised zones and metallic infrastructure [@Heagy2023] may exhibit pronounced contrasts in magnetic permeability relative to their host rocks. Dielectric permittivities influence only high-frequency data in very resistive environments [@kals08]. Consequently, in `elfe3D`, magnetic permeability is treated as a variable model parameter, in conjunction with electrical resistivity. @Rulff2021 present a numerical test example with magnetic anomalies.
 
