@@ -28,8 +28,8 @@ The controlled-source electromagnetic method is a geophysical technique that det
 
 # Statement of need
 
-The purpose of the software is to ...The numerical modelling program `elfe3D` calculates forward responses, i.e. electric and magnetic field components, for frequency-domain three-dimensional (3D) controlled-source electromagnetic surveys in geophysics [Figure \ref{fig:example}]. 
-Compared to standard electromagnetic geophysical simulation software, `elfe3D` excels in flexibility regarding subsurface properties and geometries as well as survey settings, i.e. receivers can be arbitrarily placed in the modelling domain and the electrical properties can be flexibly distributed in the subsurface upon model design. Implemented adaptive mesh refinement approaches can automatically design problem-specific meshes and optimise computational load and solution accuracy.
+Advanced and customisable forward modeling and inversion approaches are required to obtain resistivity models of the subsurface from electromagnetic geophysical data [@Rochlitz2019]. The purpose of `elfe3D` is to numerically calculate forward responses from subsurface models, i.e. electric and magnetic field components, for frequency-domain three-dimensional (3D) controlled-source electromagnetic surveys in geophysics [Figure \ref{fig:example}]. 
+Compared to standard electromagnetic geophysical simulation software, `elfe3D` excels in flexibility regarding subsurface properties and geometries as well as survey settings, i.e. receivers can be arbitrarily placed in the modelling domain and the electrical properties can be distributed in the subsurface upon model design. Implemented adaptive mesh refinement approaches can automatically design problem-specific meshes and optimise computational load and solution accuracy.
 
 # State of the field
 
@@ -66,7 +66,7 @@ $$\nabla \times \frac{1}{\mu} \nabla \times \mathbf{E} - i\omega \frac{1}{\rho} 
 
 where $\Omega$ is the computational domain, $\omega$ is the angular frequency, $\rho$ the electrical resistivity, $\varepsilon$ the dielectric permittivity and $\mu$ the magnetic permeability. A time dependence $e^{-i\omega t}$ is assumed and $\textbf{J}_{p}$ describes the source term.  Dirichlet boundary conditions are imposed on the outer domain boundaries.
 
-This governing equation is discretised with linear vector finite-element shape functions [@Jin2014]. Developed using modern Fortran, `elfe3D` leverages vectorisation and shared-memory parallelism and employs a direct method, the `MUMPS` solver [@Amestoy2001], for solving the system of equations. From the solution $\bf{E}$, the synthetic data, that is the electric and magnetic field components in Cartesian space, are calculated and written to output files.
+This governing equation is discretised with linear vector finite-element shape functions [@Jin2014]. Developed using modern Fortran, `elfe3D` leverages vectorisation and shared-memory parallelism and employs a direct method, the `MUMPS` solver [@Amestoy2001], for solving the system of equations. At the end of the workflow [Figure \ref{fig:example}], the synthetic data, that is the electric and magnetic field components in Cartesian space, are calculated from the solution $\bf{E}$ and written to output files.
 
 ![Key steps of the forward modelling procedure including the choice of a subsurface model and source-receiver setup (Step I; note that the subsurface anomaly and survey setup are enlarged in the image for better visibility), the meshing of the modelling domain (Step II; note that a slice through the inner modelling domain is displayed) and the calculation of field responses with `elfe3D` (Step III; note that only the electric field component in x-direction (Ex) is displayed). Figure adapted from PhD thesis: @Rulff2023.\label{fig:example}](modelling-procedure-elfe3D.png){ width=90% }
 
