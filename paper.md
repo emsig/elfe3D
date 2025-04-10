@@ -28,7 +28,7 @@ The controlled-source electromagnetic method is a geophysical technique that det
 
 # Statement of need
 
-The numerical modelling program `elfe3D` calculates forward responses, i.e. electric and magnetic field components, for frequency-domain three-dimensional (3D) controlled-source electromagnetic surveys in geophysics [Figure \ref{fig:example}]. 
+The purpose of the software is to ...The numerical modelling program `elfe3D` calculates forward responses, i.e. electric and magnetic field components, for frequency-domain three-dimensional (3D) controlled-source electromagnetic surveys in geophysics [Figure \ref{fig:example}]. 
 Compared to standard electromagnetic geophysical simulation software, `elfe3D` excels in flexibility regarding subsurface properties and geometries as well as survey settings, i.e. receivers can be arbitrarily placed in the modelling domain and the electrical properties can be flexibly distributed in the subsurface upon model design. Implemented adaptive mesh refinement approaches can automatically design problem-specific meshes and optimise computational load and solution accuracy.
 
 # State of the field
@@ -57,19 +57,25 @@ The program `elfe3D` is designed for geophysicists who want to:
 - Further develop the code.
 
 # Workflow overview
+
+Isotropic electric resistivities and magnetic permeabilities are variable, but element-wise constant, model parameters arranged in a tetrahedral mesh generated with `TetGen` [@Si2015]. The mesh files must be provided as input to `elfe3D` along with a start file specifying survey parameters such as frequencies, receiver and source positions, etc. Line or loop sources are represented along the edges of the mesh elements.
+
 The physical behavior of electromagnetic fields is described by Maxwell's equations, which serve as the foundation for the curl-curl equation in terms of the total electric field $\bf{E}$ that `elfe3D` is solving:
 
 $$\nabla \times \frac{1}{\mu} \nabla \times \mathbf{E} - i\omega \frac{1}{\rho} \mathbf{E} - \omega^2 \epsilon \mathbf{E}  = \color{black} i\omega \mathbf{J}_{p} \color{black} \quad \text{in} \quad \Omega,$$
 
 where $\Omega$ is the computational domain, $\omega$ is the angular frequency, $\rho$ the electrical resistivity, $\varepsilon$ the dielectric permittivity and $\mu$ the magnetic permeability. A time dependence $e^{-i\omega t}$ is assumed and $\textbf{J}_{p}$ describes the source term.  Dirichlet boundary conditions are imposed on the outer domain boundaries.
 
-Isotropic electric resistivities and magnetic permeabilities are variable, but element-wise constant, model parameters arranged in a tetrahedral mesh generated with `TetGen` [@Si2015]. Line or loop sources are represented along the edges of the mesh elements. The governing equations are discretised with linear vector finite-element shape functions [@Jin2014]. Developed using modern Fortran, `elfe3D` leverages vectorisation and shared-memory parallelism and employs a direct method, the `MUMPS` solver [@Amestoy2001], for solving the system of equations. From the solution $\bf{E}$, the synthetic data, that is the electric and magnetic field components in Cartesian space, are calculated and written to output files.
+This governing equation is discretised with linear vector finite-element shape functions [@Jin2014]. Developed using modern Fortran, `elfe3D` leverages vectorisation and shared-memory parallelism and employs a direct method, the `MUMPS` solver [@Amestoy2001], for solving the system of equations. From the solution $\bf{E}$, the synthetic data, that is the electric and magnetic field components in Cartesian space, are calculated and written to output files.
+
+![Key steps of the forward modelling procedure including the choice of a subsurface model and source-receiver setup (Step I; note that the subsurface anomaly and survey setup are enlarged in the image for better visibility), the meshing of the modelling domain (Step II; note that a slice through the inner modelling domain is displayed) and the calculation of field responses with `elfe3D` (Step III; note that only the electric field component in x-direction (Ex) is displayed). Figure adapted from PhD thesis: @Rulff2023.\label{fig:example}](modelling-procedure-elfe3D.png){ width=90% }
+
+
+# Development history and ongoing research
    
 The underlying code of `elfe3D` was developed between 2018-2023 and validated in @Rulff2021. This initial code is implemented in the inversion software `emilia` [@kals08; @kals10;@kals15] to enable 3D controlled-source electromagnetic inversion [@Rulff2023; @Rulff2024].
 Adaptively refined meshes and parts of the synthetic data reported in @Castillo-Reyes2023 were generated with `elfe3D`.
-The program is currently used to design surface-to-borehole controlled-source electromagnetic surveys for geothermal applications [@Rulff2024emiw].
-
-![Key steps of the forward modelling procedure including the choice of a subsurface model and source-receiver setup (Step I; note that the subsurface anomaly and survey setup are enlarged in the image for better visibility), the meshing of the modelling domain (Step II; note that a slice through the inner modelling domain is displayed) and the calculation of field responses with `elfe3D` (Step III; note that only the electric field component in x-direction (Ex) is displayed). Figure adapted from PhD thesis: @Rulff2023.\label{fig:example}](modelling-procedure-elfe3D.png){ width=90% }
+The program is currently used and extended to design surface-to-borehole controlled-source electromagnetic surveys for geothermal applications [@Rulff2024emiw].
 
 # Acknowledgements
 
@@ -78,7 +84,7 @@ The orginal code development was financed by the Smart Exploration project (Euro
 My acknoledgements also go to the `MUMPS` and `TetGen` developers as well as to Dieter Werthmüller, who helped with making `elfe3D` open-source and kindly offered to host `elfe3D` in the `emsig` project.
 
 # Availability
-Version 1.0.0 of `elfe3D` is freely available under the Apache License, Version 2.0. The source code, along with documentation and example, is hosted at https://github.com/emsig/elfe3D/tree/main. Further developments of `elfe3D` are ongoing. Collaboration and community feedback are welcome.
+Version 1.0.0 of `elfe3D` is freely available under the Apache License, Version 2.0. The source code, along with documentation, an example and reference solutions, is hosted at https://github.com/emsig/elfe3D/tree/main. Further developments of `elfe3D` are ongoing. Collaboration and community feedback are welcome.
 
 
 
