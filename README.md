@@ -15,9 +15,7 @@ An earlier version of the code that `elfe3D` is based on was developed by Paula 
 
 The present version of `elfe3D` was released in 2024 under the Apache License, Version 2.0. Further developments of `elfe3D` by Paula Rulff, now at Delft University of Technology, are ongoing. Suggestions for improvements are welcome!
 
-_Contact_: 
-
-If you would like to contribute to `elfe3D`, report issues with `elfe3D` or seek support, please send an email to p.rulff@tudelft.nl.
+If you would like to report bugs in `elfe3D`, suggest specific ideas for improvement, contribute to `elfe3D` or seek support, please open an issue or send an email to p.rulff@tudelft.nl.
 
 _Getting started:_
 
