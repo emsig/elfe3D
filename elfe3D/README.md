@@ -65,6 +65,7 @@ The following steps guide you through the `elfe3D` compilation:
   $ tar zxvf MUMPS_5.7.3.tar.gz
   $ cd MUMPS_5.7.3
   $ cp Make.inc/Makefile.debian.SEQ Makefile.inc
+  $ sudo apt install libmetis-dev libparmetis-dev libscotch-dev libptscotch-dev libatlas-base-dev openmpi-bin libopenmpi-dev liblapack-dev libscalapack-openmpi-dev
   $ make all
   ```
 
