@@ -36,7 +36,7 @@ To install `elfe3D` on a Linux system, you need to have the following installed:
 - TetGen
 - MUMPS
 
-As the mesh generator `TetGen` and the solver `MUMPS` are open source packages. Installation instructions are given below. Note that during the installation of `MUMPS`, additional libaries have to be installed. Installation instructions are given below and in the `MUMPS` Makefile.
+As the mesh generator `TetGen` and the solver `MUMPS` are open source packages. Installation instructions are given below. Note that additional libaries have to be installed during the installation of `MUMPS`. Installation instructions are given below and in the `MUMPS` Makefile.
 
 ### Installation
 
