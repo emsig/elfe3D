@@ -39,5 +39,5 @@ Paula Rulff, Laura M Buntin, Thomas Kalscheuer, Efficient goal-oriented  mesh re
 
 and refer to the `elfe3D` version you used via the ZENODO DOI: https://doi.org/10.5281/zenodo.13309721
 
-Do not forget to acknowledge `MUMPS` and `tetgen` developers!
+Do not forget to acknowledge `MUMPS` and `TetGen` developers!
 
