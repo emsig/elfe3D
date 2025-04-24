@@ -26,13 +26,25 @@ Please have a look at pages 34-40 in [Rulff (2023)](#references).
 
 ## Getting Started
 
+### Dependencies
+
+To install `elfe3D` on a Linux system, you need to have the following installed:
+
+- a modern Fortran compiler (2008 standard)
+- OpenBLAS
+- make
+- TetGen
+- MUMPS
+
+As the mesh generator `tetgen` and the solver `MUMPS` are open source packages. Installation instructions are given below. Note that during the installation of `MUMPS`, additional libaries have to be installed. Installation instructions are given below and in the `MUMPS` Makefile.
+
 ### Installation
 
 `elfe3D` can be compiled with `gfortran` or `ifort`. The provided Makefile is based on `gfortran` compilation. `gfortran` should be part of your system in Gnu compiler collection (gcc). Also, `OpenBLAS` and `make` packages are required. The latest compilation was performed on Ubuntu 22.04.
 
 The following steps guide you through the `elfe3D` compilation:
 
-- `tetgen`: The open source mesh generator `tetgen` must be installed. It can be downloaded from <https://wias-berlin.de/software/index.jsp?id=TetGen> or directly installed via typing in your terminal:
+- `TetGen`: The open source mesh generator `TetGen` must be installed. It can be downloaded from <https://wias-berlin.de/software/index.jsp?id=TetGen> or directly installed via typing in your terminal:
 
   ``` bash
   $ sudo apt install tetgen
