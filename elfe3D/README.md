@@ -14,7 +14,7 @@ To balance problem sizes and solution accuracy, adaptive mesh refinement approac
 An earlier version of the code that `elfe3D` is based on was developed by Paula Rulff with contributions from Laura Maria Buntin and Thomas Kalscheuer at Uppsala University from 2018-2023. The initial code development was financed by the Smart Exploration project (European Union's Horizon 2020 funding, grant agreement No. 775971).
 This inital code is implemented in the inversion software `emilia` ([Kalscheuer et al. (2008); Kalscheuer et al. (2010); Kalscheuer et al. (2015); Rulff and Kalscheuer (2024)](#references)) available upon request for purely academic purposes from Thomas Kalscheuer (thomas.kalscheuer@geo.uu.se).
 
-The present version of `elfe3D` was released in 2024 under the Apache License, Version 2.0. Further developments of `elfe3D` by Paula Rulff, now at Delft University of Technology, are ongoing. Suggestions for improvements are welcome via p.rulff@tudelft.nl.
+The present version of `elfe3D` was released in 2024 under the Apache License, Version 2.0. Further developments of `elfe3D` by Paula Rulff, now at Delft University of Technology, are ongoing. Suggestions for improvements are welcome via opening an issue on github or via p.rulff@tudelft.nl.
 
 ### Theory
 
