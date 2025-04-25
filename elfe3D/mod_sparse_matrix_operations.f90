@@ -32,9 +32,9 @@ contains
 
   !---------------------------------------------------------------------
   !> @brief
-  ! getu extracts the upper triangular matrix.
-  ! Changed to compgetu to work with complex matrices by 
-  ! Paula Rulff, Jan 2019.
+  !> getu extracts the upper triangular matrix.
+  !> Changed to compgetu to work with complex matrices by 
+  !> Paula Rulff, Jan 2019.
   !---------------------------------------------------------------------
   subroutine compgetu ( n, NNZ, a, ja, ia, ao, jao, iao )
     !

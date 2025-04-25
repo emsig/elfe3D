@@ -35,14 +35,23 @@ contains
   !> @brief 
   !> subroutine for assigning model parameters to elements based on 
   !> their element attributes
+  !>
   !> Provide the following in input file: in/regionparameters.txt
+  !>
   !> This input file must have the following 
+  !>
   !> structure (example):
-  !> # eleattr
+  !>
+  !> eleattr
+  !>
   !> 3
-  !> # eleattr rho mu_r epsilon_r
+  !>
+  !> eleattr rho mu_r epsilon_r
+  !>
   !> 1 100000000.0 1.0 0.0
+  !>
   !> 2 100 1.0 0.0
+  !>
   !> 3 10 1.0 0.0
   !>
   !> epsilon_r is not used.

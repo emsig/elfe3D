@@ -122,7 +122,7 @@ contains
 
   !---------------------------------------------------------------------
   !> @brief
-  !>  calculate matrices for coordinates
+  !> subroutine for calculating coordinate arrays
   !---------------------------------------------------------------------
   subroutine calc_coord_matrices (M, nd, el2nd, x, y, z, &
        x_start, x_end, y_start, y_end, z_start, z_end)
@@ -210,7 +210,8 @@ contains
 
   !---------------------------------------------------------------------
   !> @brief
-  !> calculate matrices for signs that are assigned to the vector shape
+  !> subroutine to calculate matrices for signs that are assigned to 
+  !> the vector shape
   !> functions of the edges of all elements to compensate for local and
   !> global directions
   !---------------------------------------------------------------------
