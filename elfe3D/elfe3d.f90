@@ -24,7 +24,7 @@
 !> to calculate electric and magnetic fields components 
 !> at given positions.
 !!
-!! Specify modelling input parameters in ??
+!> Specify modelling input parameters in in/elfe3D_input.txt
 !!
 !> Compile with: the provided makefile, tested with gfortran compiler.
 !!
