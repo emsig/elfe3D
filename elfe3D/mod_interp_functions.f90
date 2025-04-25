@@ -30,9 +30,9 @@ contains
 
   !---------------------------------------------------------------------
   !> @brief
-  ! subroutine for calculating coefficients for linear interpolation 
-  ! functions beween nodes
-  ! and abcd_start & abcd_end matrices M times 6 each
+  !> subroutine for calculating coefficients for linear interpolation 
+  !> functions beween nodes
+  !> and abcd_start & abcd_end matrices M times 6 each
   !---------------------------------------------------------------------
   subroutine calc_abcd (M, x, y, z, a, b, c, d, &
        a_start, a_end, b_start, b_end, c_start, c_end, d_start, d_end)
@@ -198,7 +198,7 @@ contains
 
   !---------------------------------------------------------------------
   !> @brief
-  ! subroutine to calculate the volume of each element
+  !> subroutine to calculate the volume of each element
   !---------------------------------------------------------------------
   subroutine calc_vol (M, x, y, z, ve)
 
@@ -228,7 +228,7 @@ contains
 
   !---------------------------------------------------------------------
   !> @brief
-  ! Subroutine to calculate the edge lengths
+  !> Subroutine to calculate the edge lengths
   !---------------------------------------------------------------------
   subroutine calc_edge_length (M, E, nd, ed2nd, x, y, z, el2edl, edl)
 

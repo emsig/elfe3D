@@ -33,7 +33,9 @@ contains
   !---------------------------------------------------------------------
   !> @brief
   !> subroutine for detecting source edges and their directions
+  !>
   !> for x-directed electric dipole source 
+  !>
   !> store it in global vector "source" with +/- 1
   !---------------------------------------------------------------------
   subroutine HED_x (E, direction, nd, ed2nd, &
@@ -98,7 +100,9 @@ contains
   !---------------------------------------------------------------------
   !> @brief
   !> subroutine for detecting source edges and their directions
+  !>
   !> for y-directed electric dipole source
+  !>
   !> stores it in global vector "source" with +/- 1
   !---------------------------------------------------------------------
   subroutine HED_y (E, direction, nd, ed2nd, &
@@ -162,8 +166,10 @@ contains
 
   !---------------------------------------------------------------------
   !> @brief
-  !>  subroutine for detecting source edges and their directions
+  !> subroutine for detecting source edges and their directions
+  !>
   !> for a horizontal square-loop source 
+  !>
   !> stores it in global vector "source" with +/- 1
   !---------------------------------------------------------------------
   subroutine loop_source (E, direction, midp_source, nd, ed2nd, &
@@ -260,8 +266,10 @@ contains
   !---------------------------------------------------------------------
   !> @brief
   !> subroutine for detecting source edges and their directions
+  !>
   !> for x-directed arbitrary electric dipole source, store it in
   !> global vector "source" with +/- 1
+  !>
   !> ! might not work for refinement as node markers are used !
   !---------------------------------------------------------------------
   subroutine arbitrary_HED_x (E, direction, nodemarker, nd, ed2nd, &
@@ -317,8 +325,10 @@ contains
   !---------------------------------------------------------------------
   !> @brief
   !> subroutine for detecting source edges and their directions
+  !>
   !> for y-directed electric dipole source, store it in
   !> global vector "source" with +/- 1
+  !>
   !> ! might not work for refinement as node markers are used !
   !---------------------------------------------------------------------
   subroutine arbitrary_HED_y (E, direction, nodemarker, nd, ed2nd, &
@@ -375,6 +385,7 @@ contains
   !> @brief
   !> subroutine for detecting source edges and their directions
   !> for one straight source segment
+  !>
   !> global vector "source" with +/- 1
   !---------------------------------------------------------------------
   subroutine straight_source_segment (E, direction, nd, ed2nd, &
@@ -586,8 +597,11 @@ contains
   !> @brief
   !> subroutine for detecting source edges and their directions
   !> for a segmented line or loop source
+  !>
   !> global vector source with +/- 1
+  !>
   !> The file: 'in/source.txt' has to be provided
+  !>
   !> best imeplemented option 
   !---------------------------------------------------------------------
   subroutine segmented_source (E, direction, nd, ed2nd, CSTYPE, source)

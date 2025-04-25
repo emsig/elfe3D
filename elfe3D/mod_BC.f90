@@ -286,6 +286,7 @@ contains
   !---------------------------------------------------------------------
   !> @brief
   !> subroutine for detecting perfect electric conductor (PEC) edges
+  !>
   !> so far only exactly vertical boreholes, z negative downwards
   !--------------------------------------------------------------------
   subroutine detect_PEC_edges (E, nd, ed2nd, num_PEC, &

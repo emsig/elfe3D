@@ -32,7 +32,7 @@ contains
   !---------------------------------------------------------------------
   !> @brief
   !> subroutine for calculating electric and magnetic fields at a
-  ! certain receiver location
+  !> certain receiver location
   !---------------------------------------------------------------------
   subroutine calculate_fields (u1, v1, w1, rec1_el, el2ed, S, &
                                a_start, a_end, b_start, b_end, &

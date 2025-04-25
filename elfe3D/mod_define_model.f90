@@ -53,9 +53,11 @@ contains
   !---------------------------------------------------------------------
   !> @brief'
   !> subroutine for defining solver
+  !>
   !> Define the following in input file:
+  !>
   !> solver
-  !> 1: PARDISO (currently not available!)
+  !> 1: PARDISO (currently not available!) 
   !> 2: MUMPS
   !---------------------------------------------------------------------
   subroutine define_solver (solver)
@@ -99,35 +101,47 @@ contains
   !---------------------------------------------------------------------
   !> @brief
   !> subroutine for defining refinement parameters
+  !>
   !> Define the following in input file:
   !> maxRefSteps, maxUnknowns, betaRef, accuracyTol, vtk , 
-  !> errorEst_method , refStrategy             0
+  !> errorEst_method , refStrategy
   !>
   !> Maximum number of refinement steps:
   !> maxRefSteps = 0 means no refinement
-  !> run several frequencies only without refinement
+  !>
   !> Maximum number of unknowns:
   !> maxUnknowns  
+  !>
   !> threshold for number of elements to be refined:
   !> betaRef
   !> (e.g. 0.9 = those with 90% highest error estimator)
+  !>
   !> desired accuracy tolerance < 1:
   !> accuracyTol
+  !>
   !> write .vtk files for paraview with error estimates (yes/no) = (1/0)
   !> vtk
+  !>
   !> Method for error estimation:
+  !>
   !> errorEst_method
+  !>
   !> residuals (1)
   !> residuals and face jumps J (2)
   !> residuals and face jumps J and H (3)
   !> face jumps J (4)
   !> face jumps H (5)
   !> face jumps J & H  (6)
+  !>
   !> Refinement strategy:
   !> refStrategy
+  !>
   !> constant quality factor (0)
+  !>
   !> maxRefSteps-1 on low quality mesh, last step high quality mesh (1)
+  !>
   !> increasing quality factor (2)
+  !>
   !> increasing quality factor on mesh with detailled subsurface anomaly
   !> (-T and -d  option added) (3)
   !---------------------------------------------------------------------
@@ -233,6 +247,7 @@ contains
   !---------------------------------------------------------------------
   !> @brief
   !> subroutine for defining mesh
+  !>
   !> Define the following in input file: model_file_name
   !---------------------------------------------------------------------
   subroutine define_mesh (NodeFile, EdgeFile, ElementFile, NeighFile, &
@@ -319,45 +334,61 @@ contains
   !> subroutine for defining size of the source
   !>
   !> Define the following in input file:
+  !>
   !> source_type
+  !>
   !> source start coordinates
+  !>
   !> source end coordinates
+  !>
   !> current_direction
+  !>
   !> source_moment
   !>
   !> Options for source_type:
+  !>
   !> HED_x (0), HED_y (1), loop_source (2), arbitrary HED_x (3), 
   !> arbitrary HED_y (4), straight_source_segment in any direction (5)
   !> segmented_line_source (6), segmented_loop_source (7)
+  !>
   !> PR comment:  only 6 or 7 would be sufficient
-
+  !>
   !> HED_x (0), HED_y (1) are straight HEDs in exactly either x- or 
   !> y- direction
+  !>
   !> loop_source (2) is a squared loop source defined by northern
   !> line-source and midpoint, segments exactly on x- and y- direction
   !> if you choose arbitrary HED, you have to use node-boundary 
   !> markers = 3 for all source nodes in your .poly-inputfile
   !> this will be the fastest option, but it does probably not work 
   !> for refinement!
+  !>
   !> straight_source_segment in any direction (5) every edge between 
   !> source start and source endpoint will be a source edge
+  !>
   !> line/loop source split into straight source segments - provide 
   !> input file with coordinates of segment nodes! (6/7)
+  !>
   !> Loop source coordinates always in clockwise direction!
 
 
   !> Define coordinates of the horizontal source:
+  !>
   !> if z negative downwards:
+  !>
   !> x positive to E
   !> y positive to N
   !> z positive upwards
+  !>
   !> in case of a horizontal loop source, define north line-source 
   !> start & endpoints
 
   !> if z positive downwards:
+  !>
   !> x positive to N
   !> y positive to E
   !> z positive downwards
+  !>
   !> in case of a horizontal loop source, define east line-source 
   !> start & endpoint
 
@@ -367,19 +398,28 @@ contains
 
 
   !> Define direction:
+  !>
   !> if z negative downwards:
+  !>
   !> for CSTYPE = HED:
+  !>
   !> current in positive direction: direction = 0
   !> current in negative direction: direction = 1
+  !>
   !> for CSTYPE = loop_source:
+  !>
   !> clockwise current: direction  = 0
   !> anticlocwise current: direction = 1
 
   !> if z positive downwards:
+  !>
   !> for CSTYPE = HED:
+  !>
   !> current in positive direction: direction = 1
   !> current in negative direction: direction = 0
+  !>
   !> for CSTYPE = loop_source:
+  !>
   !> clockwise current: direction  = 1
   !> anticlocwise current: direction = 0
   !---------------------------------------------------------------------
@@ -469,19 +509,30 @@ contains
   !> @brief
   !> subroutine for defining existence and size of a PEC
   !> to model metallic borehole casing
+  !>
   !> Define the following in input file:
+  !>
   !> no PEC present: 
   !> PEC_present = 0
+  !>
   !> PEC present: 
   !> PEC_present = 1
+  !>
   !> define number of PEC:
   !> num_PEC
+  !>
   !> followed by coordinates of start points
+  !>
   !> PEC1 start x,y,z
+  !>
   !> PEC2 start x,y,z
+  !>
   !> PEC.. start x,y,z
+  !>
   !> PEC1 end x,y,z
+  !>
   !> PEC2 end x,y,z
+  !>
   !> PEC.. end x,y,z
   !---------------------------------------------------------------------
   subroutine define_PEC (PEC, num_PEC, PEC_start, PEC_end)
@@ -564,6 +615,7 @@ contains
   !---------------------------------------------------------------------
   !> @brief
   !> subroutine for defining output files
+  !>
   !> Define the following in input file: output_E_file, output_E_file
   !---------------------------------------------------------------------
   subroutine define_output (EFile, HFile, num_rec)
@@ -624,8 +676,10 @@ contains
   !---------------------------------------------------------------------
   !> @brief
   !> subroutine for defining frequencies
+  !>
   !> Define the following in input file: 
-  !> num_freq                1
+  !> num_freq 
+  !>
   !> followed by a list of frequencies
   !---------------------------------------------------------------------
 
@@ -683,8 +737,11 @@ contains
   !---------------------------------------------------------------------
   !> @brief
   !> subroutine for defining model_size
+  !>
   !> Define the following in input file below keyword model_size
+  !>
   !> minimum x,y,z
+  !>
   !> maximum x,y,z
   !---------------------------------------------------------------------
   subroutine define_model_size (x_min, x_max, &
@@ -728,8 +785,11 @@ contains
   !---------------------------------------------------------------------
   !> @brief
   !> subroutine for defining receiver locations
+  !>
   !> Define the following in input file: 
+  !>
   !> num_rec
+  !>
   !> followed by a list of receiver coordinates x,y,z
   !---------------------------------------------------------------------
   subroutine define_rec (M, num_rec, a, b, c, d, Ve, u1, v1, w1, &

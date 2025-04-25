@@ -76,8 +76,8 @@ program elfe3d
   !---------------------------------------------------------------------
   ! Counter variables
   integer :: i,j,l
-  integer :: numfreq
-  integer :: refStep
+  integer :: numfreq ! current frequency
+  integer :: refStep ! current refinement step
 
 
   ! Mesh filenames
@@ -285,7 +285,7 @@ program elfe3d
   character(len = 50) :: StringStep, StringEnding
 
   ! time testing
-  real(kind=dp) :: start, finish, seconds,seconds_solve
+  real(kind=dp) :: start, finish, seconds, seconds_solve
 
   ! solver type
   integer :: solver
