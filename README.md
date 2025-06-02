@@ -1,4 +1,4 @@
-# elfe3D
+# elfe3D v1.0.0
 Modelling with the total **el**ectric field approach using **f**inite **e**lements in **3D**
 
 _About:_
