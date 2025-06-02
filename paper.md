@@ -84,7 +84,7 @@ The orginal code development was financed by the Smart Exploration project (Euro
 My acknoledgements also go to the `MUMPS` and `TetGen` developers as well as to Dieter Werthmüller, who helped with making `elfe3D` open-source and kindly offered to host `elfe3D` in the `emsig` project.
 
 # Availability
-Version 1.0.0 of `elfe3D` is freely available under the Apache License, Version 2.0. The source code, along with documentation, an example and reference solutions, is hosted at https://github.com/emsig/elfe3D/tree/main. Further developments of `elfe3D` are ongoing. Collaboration and community feedback are welcome.
+Versions 1.0.0 and 1.0.1 of `elfe3D` are freely available under the Apache License, Version 2.0. The source code of `elfe3D v1.0.1`, along with documentation, an example and reference solutions, is hosted at [https://github.com/emsig/elfe3D/tree/main](https://github.com/emsig/elfe3D/tree/JOSS_paper). Further developments of `elfe3D` are ongoing. Collaboration and community feedback are welcome.
 
 
 
