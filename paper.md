@@ -1,5 +1,5 @@
 ---
-title: 'elfe3D: Modelling with the total **el**ectric field approach using **f**inite **e**lements in **3D**'
+title: 'elfe3D v1.0.1: Modelling with the total **el**ectric field approach using **f**inite **e**lements in **3D**'
 tags:
   - Simulations
   - Geophysics
