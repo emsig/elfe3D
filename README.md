@@ -5,7 +5,7 @@ _About:_
 
 `elfe3D` is a 3D forward modelling code that can simulate electric and magnetic field responses from frequency-domain controlled-source electromagnetic geophysical setups. It uses tetrahedral meshes and first-order finite-element approximations. In addition, adaptive mesh refinement approaches are implemented.
 
-This release (v.1.0.1) contains updated documentation files and the associated JOSS paper.
+This release (v.1.0.1) contains updated documentation files and the associated JOSS paper: [![DOI](https://joss.theoj.org/papers/10.21105/joss.07949/status.svg)](https://doi.org/10.21105/joss.07949)
 
 _Statement of need:_
 
@@ -38,6 +38,8 @@ If you publish results generated with `elfe3D`, please give credit to the `elfe3
 
 Paula Rulff, Laura M Buntin, Thomas Kalscheuer, Efficient goal-oriented  mesh refinement in 3-D finite-element modelling adapted for controlled source electromagnetic surveys, Geophysical Journal International, Volume 227, Issue
 3, December 2021, Pages 1624–1645, https://doi.org/10.1093/gji/ggab264
+
+
 
 and refer to the `elfe3D` version you used via the ZENODO DOI: https://doi.org/10.5281/zenodo.13309721
 
