@@ -1,4 +1,7 @@
 # choose compiler
+FCC = ifx
+FCC = flang
+FCC = nvfortran
 FCC = gfortran
 
 # determine operating system
@@ -7,10 +10,6 @@ OS = $(shell uname)
 ARCH = $(shell uname -m)
 # determine hostname
 HOST = $(shell hostname)
-
-# additional directory for shared libraries
-LIBDIR = $(HOME)/lib
-
 
 # object files created during compilation
 OBJ =   mod_constant.o \
@@ -33,28 +32,54 @@ OBJ =   mod_constant.o \
 	elfe3d.o
 
 
+# link MUMPS libaries here!
+OBJUTIL = -L$(MUMPS_ROOT)/lib -lpthread -lm -lzmumps -lmumps_common -lesmumps -lpord -lmpiseq -L$(SCOTCH_ROOT)/lib -L$(METIS_ROOT)/lib -lscotch -lscotcherr -lmetis -lopenblas
+
 ##-------------------------------------------------------------------------------------
 # Section with compiler flags for shared library and compiler options
 ##
 ## for gfortran
 ##
-ifeq (${FCC},gfortran)
-ifeq (${OS},Linux)
-# link MUMPS libaries here!
-OBJUTIL = -L/usr/local/lib -L$(LIBDIR) -lpthread -lm -lzmumps -lmumps_common -lesmumps -lpord -lmpiseq -L/usr/lib -lscotch -lmetis -lopenblas
-endif
-
-# OpenMP library
-OMPLIB = -lgomp
+ifeq ($(findstring gfortran,${FCC}),gfortran) 
 
 # compiler flags
-FFLAGS = -O2 -march=native -mtune=native -mfma -malign-data=cacheline -std=f2008 -ffree-form -ffree-line-length-none -ftree-vectorize -ftree-vectorizer-verbose=2 -fopt-info-vec -fopenmp -I/usr/include -fall-intrinsics
+FFLAGS = -Ofast -march=native -mtune=native -mfma -malign-data=cacheline -ffree-form -ftree-vectorize -ftree-vectorizer-verbose=2 -fopt-info-vec -fopenmp 
+FFLAGS += -pg 
+#
 # for warnings you can include here: 
 # -pedantic -Wall -Wopenmp-simd -Wvector-operation-performance
 
 # compile-time directives (for preprocessor etc.)
-COMPFLAGS = -x f95-cpp-input
+#COMPFLAGS = -x f95-cpp-input
+
+#Intel OpenAPI compiler
+else ifeq ($(findstring ifx,${FCC}),ifx)
+
+FFLAGS = -fast -march=x86-64-v3 -free -fopenmp -shared -fPIC
+FFLAGS = -O3 -free -qopenmp -g -init=zero -mcmodel=large
+#FFLAGS = -O0 -free -qopenmp -g -init=zero 
+
+#Intel older ifort compiler
+else ifeq ($(findstring ifort,${FCC}),ifort)
+
+FFLAGS = -fast -march=core-avx2 -free -qopenmp -shared -fPIC
+FFLAGS = -O3 -march=core-avx2 -free -qopenmp -fPIC
+
+#AMD aocc compiler
+else ifeq ($(findstring flang,${FCC}),flang)
+
+FFLAGS = -Ofast -ffree-form -fopenmp 
+
+#Nvidia nvhpc compiler
+else ifeq ($(findstring nvfortran,${FCC}),flang)
+
+FFLAGS = -Ofast -Mfreeform -mp 
+
+else 
 endif
+
+FFLAGS += -I$(MUMPS_ROOT)/include
+
 ##-------------------------------------------------------------------------------------
 #
 #  Default command.
@@ -70,13 +95,6 @@ help:
 	@echo "   make all    -  make all object, module and executable files"
 
 #
-# create $(LIBDIR), if it does not exist
-#
-$(LIBDIR):
-	mkdir -p $(LIBDIR)
-
-
-#
 # Dependencies of object files and their compilation rules
 #
 $(OBJ): %.o: %.f90 
@@ -86,13 +104,10 @@ $(OBJ): %.o: %.f90
 # Linking stage
 #
 all: $(OBJ)
-	$(FCC) $(FFLAGS) $(OBJ) $(OBJUTIL) -o elfe3d
-
+	$(FCC) $(FFLAGS) $(OBJ) $(OBJUTIL) -Wl,-rpath=$(MUMPS_ROOT)/lib -Wl,-rpath=$(METIS_ROOT)/lib -Wl,-rpath=$(SCOTCH_ROOT)/lib -o elfe3d 
 
 # clean up
 .PHONY: clean
 
-ifeq (${OS},Linux)
 clean:
-	-\rm *.o *.mod in/*.vol
-endif
+	rm -f *.o *.mod in/*.vol
