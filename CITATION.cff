@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Rulff"
+  given-names: "Paula"
+  orcid: "https://orcid.org/0000-0001-6714-8008"
+title: "emsig/elfe3D v1.0.1: Modelling with the total electric field approach using finite elements in 3D"
+version: 1.0.1
+doi: 10.5281/zenodo.15422415
+date-released: 2025-05-15
+url: "https://github.com/emsig/elfe3D"
