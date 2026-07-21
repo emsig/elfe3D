@@ -23,7 +23,15 @@ _Getting started:_
 
 You find the `elfe3D` source code in `elfe3D/elfe3D/` and the manual including instalation instructions in `elfe3D/elfe3D/README.md`.
 `elfe3D` can be compiled with the provided Makefile.
-Note that, the open source mesh generator `tetgen` and the direct solver `MUMPS` must be installed additionally. Be aware that some `tetgen` versions are not working properly. The test example in `elfe3D/elfe3D/in` can be used if your tetgen version is working (`tetgen 1.6` might cause problems). Its should run without warnings, PLC errors or intersections. Chech that your mesh is a closed 3D-cube by visualising it, e.g. with `ParaView`.
+Note that, the open source mesh generator `tetgen` and the direct solver `MUMPS` must be installed additionally. 
+
+Be aware that some `tetgen` versions are not working properly. The test example in `elfe3D/elfe3D/in` can be used to test if your tetgen version is working. Its should run without warnings, PLC errors or intersections. Check that your mesh is a closed 3D-cube with three regions (air, earth, anomaly) by visualising it, e.g. with `ParaView`.
+
+We have encountered bugs when using most available version of tetgen. One way to correctly generate mesh files is to use the tetgen conda package v1.5.0. If you have conda or miniconda installed, run the following command to install it:
+
+```
+conda install -c conda-forge tetgen=1.5.0
+```
 
 _Tests:_
 
